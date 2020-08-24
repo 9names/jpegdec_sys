@@ -666,6 +666,13 @@ JPEG_STATIC int JPEGInit(JPEGIMAGE *pJPEG)
 {
     return JPEGParseInfo(pJPEG, 0); // gather info for image
 } /* JPEGInit() */
+
+// Rust won't let us easily zero init a struct, so that's all this function does
+JPEGIMAGE JPEG_ZeroInitJPEGIMAGE(){
+    JPEGIMAGE j = {0};
+    return j;
+}
+
 //
 // Unpack the Huffman tables
 //

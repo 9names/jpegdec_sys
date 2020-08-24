@@ -1,7 +1,6 @@
 #![allow(non_upper_case_globals)]
 #![allow(non_camel_case_types)]
 #![allow(non_snake_case)]
-#![feature(new_uninit)]
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
@@ -16,8 +15,8 @@ mod tests {
     #[test]
     fn decode() {
         // Need to let Rust trust us with some initialized memory to store our C data
-        let image = Box::<JPEGIMAGE>::new_uninit();
-        let image = unsafe { image.assume_init() };
+        // We can do that by getting C to zero-init a struct and return it
+        let image = Box(JPEG_ZeroInitJPEGIMAGE());
         let imgptr: *mut JPEGIMAGE = Box::into_raw(image);
         
         // include_bytes gives us an immutable slice, copy that into a mutable one

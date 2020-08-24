@@ -226,6 +226,8 @@ int JPEG_getThumbHeight(JPEGIMAGE *pJPEG);
 int JPEG_getLastError(JPEGIMAGE *pJPEG);
 void JPEG_setPixelType(JPEGIMAGE *pJPEG, int iType); // defaults to little endian
 void JPEG_setMaxOutputSize(JPEGIMAGE *pJPEG, int iMaxMCUs);
+// Rust won't let us easily zero init a struct, so that's all this function does
+JPEGIMAGE JPEG_ZeroInitJPEGIMAGE();
 #endif // __cplusplus
 
 // Due to unaligned memory causing an exception, we have to do these macros the slow way
