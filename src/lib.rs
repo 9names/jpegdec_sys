@@ -16,7 +16,8 @@ mod tests {
     fn decode() {
         // Need to let Rust trust us with some initialized memory to store our C data
         // We can do that by getting C to zero-init a struct and return it
-        let image = Box(JPEG_ZeroInitJPEGIMAGE());
+        // Obviously that's unsafe, so wrap that in an unsafe block
+        let image = Box::new(unsafe{JPEG_ZeroInitJPEGIMAGE()});
         let imgptr: *mut JPEGIMAGE = Box::into_raw(image);
         
         // include_bytes gives us an immutable slice, copy that into a mutable one
