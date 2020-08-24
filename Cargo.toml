@@ -10,5 +10,5 @@ links = "jpegdec"
 [dependencies]
 
 [build-dependencies]
-bindgen = "0.54.1"
-cc = "1.0.59"
+bindgen = "^0"
+cc = "^1"
