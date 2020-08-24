@@ -4,16 +4,17 @@
 
 include!(concat!(env!("OUT_DIR"), "/bindings.rs"));
 
-extern "C" fn callback(_pdraw: *mut JPEGDRAW) {
-    
-}
-
 #[cfg(test)]
 
 mod tests {
     use super::*;
     #[test]
     fn decode() {
+        // Need a callback function for JPEG_openRAM
+        extern "C" fn callback(_pdraw: *mut JPEGDRAW) {
+            // This is a stub, it does nothing
+        }
+
         // Need to let Rust trust us with some initialized memory to store our C data
         // We can do that by getting C to zero-init a struct and return it
         // Obviously that's unsafe, so wrap that in an unsafe block
