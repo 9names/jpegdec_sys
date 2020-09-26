@@ -30,7 +30,7 @@ fn main() {
     cc::Build::new()
         .shared_flag(false)
         .static_flag(true)
-        .file("src/jpeg.c")
+        .file("JPEGDEC/src/jpeg.c")
         .file("src/wrapper.c")
         // JPEGDEC needs a define if you're not running under Arduino framework
         .define("__LINUX__", Some("1"))
