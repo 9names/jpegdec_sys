@@ -9,7 +9,7 @@ fn main() {
 
     let bindings = bindgen::Builder::default()
         // Wrapper includes our includes
-        .header("wrapper.h")
+        .header("src/wrapper.h")
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
