@@ -1,3 +1,4 @@
 [submodule "JPEGDEC"]
 	path = JPEGDEC
 	url = https://github.com/9names/JPEGDEC
+	branch = rust2

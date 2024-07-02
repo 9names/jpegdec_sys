@@ -12,7 +12,7 @@ fn main() {
         .header("src/wrapper.h")
         // Tell cargo to invalidate the built crate whenever any of the
         // included header files changed.
-        .parse_callbacks(Box::new(bindgen::CargoCallbacks))
+        .parse_callbacks(Box::new(bindgen::CargoCallbacks::new()))
         .use_core()
         .ctypes_prefix("cty")
         // Finish the builder and generate the bindings.
@@ -30,7 +30,7 @@ fn main() {
     cc::Build::new()
         .shared_flag(false)
         .static_flag(true)
-        .file("JPEGDEC/src/jpeg.c")
+        .file("JPEGDEC/src/JPEGDEC.cpp")
         .file("src/wrapper.c")
         // JPEGDEC needs a define if you're not running under Arduino framework
         .define("__LINUX__", Some("1"))
